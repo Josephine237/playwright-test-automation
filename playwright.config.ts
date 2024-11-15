@@ -1,10 +1,11 @@
 import { defineConfig, devices } from "@playwright/test";
-import dotenv from 'dotenv';
 
-dotenv.config({
+require('dotenv').config({
   /* Add a variable (e.g. via ${process.env.ENV}) to path to distinguish between environments we running our tests against */
   path: './env/.env',
 });
+
+const { BASE_URL } = process.env;
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -24,7 +25,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "https://datoj24.czechhackitas.cz",
+    baseURL: BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
@@ -33,8 +34,33 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: "chromium",
+      name: "Examples",
       use: { ...devices["Desktop Chrome"] },
+      testMatch: "example-czechitas.spec.ts",
+    },
+
+    {
+      name: "Template",
+      use: { ...devices["Desktop Chrome"] },
+      testMatch: "template.spec.ts",
+    },
+
+    {
+      name: "Password",
+      use: { ...devices["Desktop Chrome"] },
+      testMatch: "forgot-password.spec.ts",
+    },
+
+    {
+      name: "Registration",
+      use: { ...devices["Desktop Chrome"] },
+      testMatch: "registration.spec.ts",
+    },
+
+    {
+      name: "New Order",
+      use: { ...devices["Desktop Chrome"] },
+      testMatch: "new-order.spec.ts",
     },
   ],
 });

@@ -26,8 +26,8 @@ test.describe("Ukazkova test suita ve ktere najdes ruzne zpusoby jak a co je moz
     const password = createRandomUsername(6);
 
     // when
-    const response = await userApi.registerUser(username, password);    
-    
+    const response = await userApi.registerUser(username, password);
+
     // then
     expect(response.status()).toBe(201);
   });
@@ -36,19 +36,19 @@ test.describe("Ukazkova test suita ve ktere najdes ruzne zpusoby jak a co je moz
   test.describe.parallel("icoFieldTest", () => {
     // List of test values
     const icos = [
-      "123456789", 
-      "ASDFBVC", 
+      "123456789",
+      "ASDFBVC",
       "123"
     ];
 
     icos.forEach((icoValue) => {
       test(`testing ICO value: ${icoValue}`, async () => {
         await pages.headerMenu.goToKindergartenAndSchoolSection();
-        await pages.orderPage.insertICO(icoValue);
+        await pages.newOrderPage.insertICO(icoValue);
         // Add any assertions or checks if necessary, assuming some validation or outcome needs to be verified
       });
     });
-    
+
   });
 
 });
