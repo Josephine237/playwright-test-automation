@@ -17,7 +17,9 @@ test.describe("Objednávka pro MŠ/ZŠ", () => {
   test.describe("Zde piš testy ...", () => {
 
     test("nějaký test ...", async () => {
+      await pages.headerMenu.goToKindergartenAndSchoolSection();
 
+      // test code ...
     });
 
   });
