@@ -12,3 +12,6 @@ Start by downloading the required packages
 Then you can run the tests
 
 `npm run test`
+
+Spouštění UI v chromium
+`npx playwright test --ui`
